@@ -6,7 +6,7 @@ module.exports = generators.Base.extend({
         generators.Base.apply(this, arguments);
 
         // 添加选项
-        this.option('coffee');
+        this.option();
     },
     // 给用户展示选项提示
     prompting: {
@@ -20,17 +20,16 @@ module.exports = generators.Base.extend({
 
             // 输入的类型，字段，提示
             var prompt = [{
-                type: 'comfirm',
+                type: 'confirm',
                 name: 'createDirectory',
                 message: '您要创建一个新的项目吗？'
             }]
-
             // 异步返回
-            this.prompt(prompt, function(response){
+            this.prompt(prompt).then(function(response){
                 this.options.createDirectory = response.createDirectory
-
                 done()
             }.bind(this))
+
         },
         // 目录名称
         dirname: function(){
@@ -45,7 +44,7 @@ module.exports = generators.Base.extend({
                 message: '请输入目录名称'
             }]
 
-            this.prompt(prompt, function (response) {
+            this.prompt(prompt).then(function (response) {
             this.options.dirname = response.dirname
                 done()
             }.bind(this))
@@ -62,7 +61,7 @@ module.exports = generators.Base.extend({
                 message: '请输入版本号'
             }]
 
-            this.prompt(prompt, function (response) {
+            this.prompt(prompt).then(function (response) {
             this.options.version = response.version
                 done()
             }.bind(this))
@@ -78,7 +77,7 @@ module.exports = generators.Base.extend({
                 message: '请输入作者'
             }]
 
-            this.prompt(prompt, function (response) {
+            this.prompt(prompt).then(function (response) {
             this.options.author = response.author
                 done()
             }.bind(this))
@@ -94,7 +93,7 @@ module.exports = generators.Base.extend({
                 message: '描述'
             }]
 
-            this.prompt(prompt, function (response) {
+            this.prompt(prompt).then(function (response) {
             this.options.description = response.description
                 done()
             }.bind(this))
@@ -110,14 +109,14 @@ module.exports = generators.Base.extend({
         },
         allFile: function(){
             this.bulkDirectory('./bin', this.destinationPath() + '/bin')
-            this.bulkDirectory('./bootstrap', this.destinationPath() + '/bulid')
+            this.bulkDirectory('./bootstrap', this.destinationPath() + '/bootstrap')
             this.bulkDirectory('./bulid', this.destinationPath() + '/bulid')
-            this.bulkDirectory('./config', this.destinationPath() + '/src')
-            this.bulkDirectory('./controllers', this.destinationPath() + '/test')
-            this.bulkDirectory('./middlewares', this.destinationPath() + '/test')
-            this.bulkDirectory('./pages', this.destinationPath() + '/test')
-            this.bulkDirectory('./routes', this.destinationPath() + '/test')
-            this.bulkDirectory('./static', this.destinationPath() + '/test')
+            this.bulkDirectory('./config', this.destinationPath() + '/config')
+            this.bulkDirectory('./controllers', this.destinationPath() + '/controllers')
+            this.bulkDirectory('./middlewares', this.destinationPath() + '/middlewares')
+            this.bulkDirectory('./pages', this.destinationPath() + '/pages')
+            this.bulkDirectory('./routes', this.destinationPath() + '/routes')
+            this.bulkDirectory('./static', this.destinationPath() + '/static')
 
             this.fs.copyTpl(
                 this.templatePath('.babelrc'),

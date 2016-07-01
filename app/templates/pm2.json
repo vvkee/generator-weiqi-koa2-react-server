@@ -1,8 +1,8 @@
 {
   "apps": [{
-    "name": "<#=name#>",
+    "name": "<%=name%>",
     "script": "bin/www",
-    "cwd": "<#=cwd#>",
+    "cwd": "<%=cwd%>",
     "max_memory_restart": "1G",
     "autorestart": true,
     "exec_mode" : "cluster",

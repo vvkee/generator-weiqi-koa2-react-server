@@ -1,7 +1,7 @@
 {
-  "name": "<#=name#>",
-  "version": "<#=version#>",
-  "description": "<#=description#>",
+  "name": "<%=name%>",
+  "version": "<%=version%>",
+  "description": "<%=description%>",
   "main": "./bin/www",
   "scripts": {
     "backed_start": "sudo gulp server_dev",
