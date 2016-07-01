@@ -1,0 +1,101 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var className = require('../bulid/config/cssModule.config')
+var hook = require('css-modules-require-hook')
+hook({
+  generateScopedName: className,
+});
+require('babel-register')({
+  "ignore": /^(node_modules|bower_components)$/,
+  "presets": ["es2015", "stage-3", "react"],
+  "extensions": [".es6", ".es", ".jsx", ".js"],
+  "only": /(bootstrap|bulid|config|controllers|middlewares|pages|routes|static|app\.js)/,
+  plugins: ['transform-runtime', 'transform-react-jsx', "babel-plugin-transform-class-properties"]
+})
+require("babel-polyfill")
+
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app').app;
+var debug = require('debug')('app:server');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '8837');
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+app.listen(port, function(){
+  debug('listening');
+});
+app.on('error', onError);
+app.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
