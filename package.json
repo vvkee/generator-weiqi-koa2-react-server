@@ -1,0 +1,27 @@
+{
+  "name": "generator-weiqi-koa2-react-server",
+  "version": "0.0.1",
+  "description": "react rendering on koa2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weizongqi1990/generator-weiqi-koa2-react-server.git"
+  },
+  "keywords": [
+    "react",
+    "server",
+    "koa2"
+  ],
+  "author": "weizongqi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weizongqi1990/generator-weiqi-koa2-react-server/issues"
+  },
+  "homepage": "https://github.com/weizongqi1990/generator-weiqi-koa2-react-server#readme",
+  "dependencies": {
+    "yeoman-generator": "^0.23.4"
+  }
+}
