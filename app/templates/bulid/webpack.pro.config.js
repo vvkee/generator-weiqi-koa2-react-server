@@ -63,8 +63,8 @@ export default () => merge(baseConfig, {
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new QiniuPlugin({
-            ACCESS_KEY: 'ZdTWWI6pGAuZmEi_7stJrAFSL64YGFOjhpZPezIb',
-            SECRET_KEY: 'LWubCkQLzScOW_IrAQN2nks-on_7aQm8E7CkKtG7',
+            ACCESS_KEY: '',
+            SECRET_KEY: '',
             bucket: 'static',
             path: 'static'
         }),
